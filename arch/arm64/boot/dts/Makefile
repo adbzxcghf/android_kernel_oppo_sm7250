@@ -1,4 +1,8 @@
 # SPDX-License-Identifier: GPL-2.0
+dtstree		:= $(srctree)/$(src)
+
+vendor := $(dtstree)/vendor
+ifneq "$(wildcard $(vendor)/Makefile)" ""
 #/*Add for spllit dtbo*/
 #subdir-y += actions
 #subdir-y += al
@@ -30,10 +34,7 @@
 subdir-y += qcom
 
 
-dtstree		:= $(srctree)/$(src)
-
-vendor := $(dtstree)/vendor
-ifneq "$(wildcard $(vendor)/Makefile)" ""
+else
         subdir-y += vendor
 endif
 
